@@ -1,10 +1,10 @@
 var gulp = require('gulp');
 var shell = require('gulp-shell');
-const files = ['dec.py'];
+const files = ['decorators.py', 'functions.py'];
 
 gulp.task('default', ['start', 'watch']);
 
-gulp.task('start', shell.task(['python dec.py']));
+gulp.task('start', shell.task([`python ${files[1]}`]));
 
 gulp.task('watch', () => {
   return gulp.watch(files, ['start'])
@@ -12,5 +12,5 @@ gulp.task('watch', () => {
 
 gulp.task('reload', () => {
   gulp.src(files)
-    .pipe(shell(['python dec.py']));
+    .pipe(shell([`python ${files[1]}`]));
 });
